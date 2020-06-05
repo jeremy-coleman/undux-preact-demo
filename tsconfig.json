@@ -1,0 +1,19 @@
+{
+	"compilerOptions" : {
+		"outDir": "_never",
+		"declaration": false,
+		"jsx": "react",
+		"jsxFactory" : "h",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"lib": ["dom", "esnext"],
+		"target":"es2017",
+		"module": "esnext",
+		"baseUrl": "./src",
+		"experimentalDecorators": true,
+		"skipLibCheck": true
+	},
+	"include": ["packages", "src"],
+    "exclude": ["node_modules", "dist"]
+}

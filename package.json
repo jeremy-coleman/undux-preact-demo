@@ -1,0 +1,52 @@
+{
+  "name": "@preact/workspace",
+  "private": true,
+  "scripts": {
+    "start": "node start",
+    "pretty": "pprettier --write src/**/*.{js,jsx,ts,tsx}"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "parser": "typescript",
+    "arrowParens": "always",
+    "jsxBracketSameLine": false,
+    "printWidth": 100,
+    "quoteProps": "consistent",
+    "semi": false,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  },
+  "importSort": {
+    ".js, jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  },
+  "dependencies": {
+    "emotion": "10.0.27",
+    "feather-icons": "4.28.0",
+    "highlight.js": "10.0.3",
+    "polished": "3.6.4",
+    "preact": "10.4.4",
+    "preact-feather": "4.1.0",
+    "prismjs": "1.20.0",
+    "rxjs": "7.0.0-alpha.0"
+  },
+  "devDependencies": {
+    "@mixer/parallel-prettier": "2.0.0",
+    "@types/node": "14.0.11",
+    "css-loader": "3.5.3",
+    "file-loader": "6.0.0",
+    "html-loader": "1.1.0",
+    "html-webpack-plugin": "4.3.0",
+    "markdown-loader": "5.1.0",
+    "prettier": "2.0.5",
+    "style-loader": "1.2.1",
+    "ts-loader": "7.0.5",
+    "tsconfig-paths-webpack-plugin": "3.2.0",
+    "typescript": "3.9.5",
+    "url-loader": "4.1.0",
+    "webpack": "4.43.0",
+    "webpack-plugin-serve": "1.0.0"
+  }
+}
