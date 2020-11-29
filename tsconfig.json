@@ -10,7 +10,7 @@
 		"lib": ["dom", "esnext"],
 		"target":"es2017",
 		"module": "esnext",
-		"baseUrl": "./src",
+		"baseUrl": "src",
 		"experimentalDecorators": true,
 		"skipLibCheck": true
 	},

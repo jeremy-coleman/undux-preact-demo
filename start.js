@@ -1,36 +1,25 @@
-const assert = require("assert")
-const webpack = require("webpack")
-const config = require("./webpack.config.js")
-const {logSymbols} = require("./tools/cli-helpers.js")
+const express = require('express');
+const path = require('path');
+const webpack = require('webpack');
+const config = require('./webpack.config');
+const app = express();
 
-var rimraf = require("rimraf")
-var fs = require('fs')
+const compiler = webpack(config);
 
-rimraf.sync("dist")
-assert(true, !fs.existsSync("dist/app/index.html"))
-fs.mkdirSync("dist/app", {recursive: true})
+app.use(express.static("public"));
+
+app.use(require('webpack-dev-middleware')(compiler, {
+    publicPath: config.output.publicPath,
+}));
+
+app.use(require("webpack-hot-middleware")(compiler));
+
+app.listen(8888, () => {
+    console.log('listening on http://localhost:8888')
+})
 
 
-const args = process.argv.slice(1)
-args.forEach((arg) => console.info(arg))
-args.some((arg) => arg === "--sayhi") && console.log("hi")
-
-
-function start() {
-  //console.log("is it really clean?", !fs.existsSync("dist/app/index.html"))
-  const compiler = webpack(config)
-  let started = false
-  console.info(logSymbols.info, "Bundling")
-  const watcher = compiler.watch({}, (err, stats) => {
-    if (!err && !stats.hasErrors() && !started) {
-      started = true
-      console.info(logSymbols.success, 'bundled');
-      if (err) {
-        console.warn(err)
-      }
-    }
-  })
-  return watcher
-}
-
-start()
+// app.use('/api', function(req, res) {
+//     res.header("Content-Type",'application/json');
+//     res.sendFile(path.join(__dirname, './api/data.json'));  
+// });
