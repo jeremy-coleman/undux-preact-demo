@@ -2,10 +2,12 @@ const path = require("path")
 const webpack = require("webpack")
 const PreactRefreshPlugin = require("@prefresh/webpack")
 const {TsconfigPathsPlugin} = require("tsconfig-paths-webpack-plugin")
+const HtmlWebpackPlugin = require("./tools/html-webpack5-plugin")
 
 const outputPath = path.resolve(__dirname, "public")
 const Prism = require("./tools/prism.js")
 const ENTRY_FILE = "./src/index.tsx"
+const HTML_TEMPLATE = "./src/index.html"
 
 module.exports = {
   mode: "development",
@@ -115,7 +117,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development")}
     }),
-    new webpack.HotModuleReplacementPlugin()
-    //new HtmlWebpackPlugin({template: HTML_TEMPLATE}),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({template: HTML_TEMPLATE}),
   ]
 }
